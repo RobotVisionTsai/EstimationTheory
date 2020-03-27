@@ -1,8 +1,8 @@
 main:Complex.cpp tool.o
-	g++ Complex.cpp tool.o -o Complex.out
+	g++ Complex.cpp tool.o -o Complex.o
 
 tool.o:tool.cpp
 	g++ -c tool.cpp
 
 clean:
-	rm -f Complex.out
+	rm -f Complex.o tool.o
