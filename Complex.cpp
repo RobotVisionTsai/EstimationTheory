@@ -22,6 +22,8 @@ int main()
     Complex B={3,4};
     Complex C[2];
     C[0] = ComplexAddst(A, B);
+    C[1] = A+B; 
     cout << C[0].fIm << endl;
+    cout << C[1].fIm << endl;
     return 0;
 }
