@@ -4,14 +4,22 @@ using namespace std;
 
 int main()
 {
+    Float a[2] = {1,2};
+    Float b[2] = {4,5};
 
-    Float a[3] = {1,2,4};
-    fVector VecA(a,3);
+    fVector VecA(a,2);
+    fVector VecB(b,2);
     VecA.Show();
-
-    fVector VecB(4,5,6);
     VecB.Show();
+    (VecA+VecB).Show();
+    // Float a[3] = {1,2,3};
+    // Float b[3] = {4,5,6};
 
+    // fVector VecA(a,3);
+    // fVector VecB(b,3);
+    // VecA.Show();
+    // VecB.Show();
+    // (VecA+VecB).Show();
     // cout << a << endl;  
     // cout << &a[0] << endl; 
     // cout << &a[1] << endl; 
