@@ -13,6 +13,132 @@ fVector operator + ( const fVector &A, const fVector &B)
     return fVector(c,A.size);
 }
 
+fVector operator - ( const fVector &A, const fVector &B)
+{
+    Float c[A.size]={};
+    for(int i=0;i<A.size;i++)
+    {
+        c[i] = A.elem[i]-B.elem[i];
+    }
+    return fVector(c,A.size);
+}
+
+fVector operator - ( const fVector &A)
+{
+    Float c[A.size]={};
+    for(int i=0;i<A.size;i++)
+    {
+        c[i] = -A.elem[i];
+    }
+    return fVector(c,A.size);
+}
+
+fVector operator - ( const fVector &A, Float n)
+{
+    Float c[A.size]={};
+    for(int i=0;i<A.size;i++)
+    {
+        c[i] = A.elem[i]-n;
+    }
+    return fVector(c,A.size);
+}
+
+fVector operator - ( Float n, const fVector &A)
+{
+    Float c[A.size]={};
+    for(int i=0;i<A.size;i++)
+    {
+        c[i] = n-A.elem[i];
+    }
+    return fVector(c,A.size);
+}
+
+fVector operator * ( const fVector &A, Float n )
+{
+    Float c[A.size]={};
+    for(int i=0;i<A.size;i++)
+    {
+        c[i] = A.elem[i]*n;
+    }
+    return fVector(c,A.size);
+}
+
+fVector operator * ( Float n, const fVector &A )
+{
+    Float c[A.size]={};
+    for(int i=0;i<A.size;i++)
+    {
+        c[i] = A.elem[i]*n;
+    }
+    return fVector(c,A.size);
+}
+
+fVector operator / ( const fVector &A, Float n)
+{
+    Float c[A.size]={};
+    for(int i=0;i<A.size;i++)
+    {
+        c[i] = A.elem[i]/n;
+    }
+    return fVector(c,A.size);
+}
+
+fVector operator / ( const fVector &A, const fVector &B)
+{
+    Float c[A.size]={};
+    for(int i=0;i<A.size;i++)
+    {
+        c[i] = A.elem[i]/B.elem[i];
+    }
+    return fVector(c,A.size);
+}
+
+double operator * ( const fVector &A, const fVector &B)
+{
+    double n=0;
+    for(int i=0;i<A.size;i++)
+    {
+        n += A.elem[i]*B.elem[i];
+    }
+    return n;
+}
+
+fVector& operator += ( fVector &A, const fVector &B)
+{
+    for(int i=0;i<A.size;i++)
+    {
+        A.elem[i] += B.elem[i];
+    }
+    return A;
+}
+
+fVector& operator -= ( fVector &A, const fVector &B)
+{
+    for(int i=0;i<A.size;i++)
+    {
+        A.elem[i] -= B.elem[i];
+    }
+    return A;
+}
+
+fVector& operator *= ( fVector &A, Float b)
+{
+    for(int i=0;i<A.size;i++)
+    {
+        A.elem[i] *= b;
+    }
+    return A;
+}
+
+fVector& operator /= ( fVector &A, Float b)
+{
+    for(int i=0;i<A.size;i++)
+    {
+        A.elem[i] /= b;
+    }
+    return A;
+}
+
 // fVector operator + ( const fVector &A, const fVector &B)
 // {
 //     return fVector(A.elem[0]+B.elem[0],A.elem[1]+B.elem[1],A.elem[2]+B.elem[2]);
@@ -33,6 +159,12 @@ fVector::fVector(Float a,Float b,Float c)
     elem[2] = c;
 }
 
+fVector::fVector( const fVector &A)
+{   
+    size = A.size;
+    elem = new Float[size];
+    memcpy(elem,&A.elem[0],sizeof(Float)*size);
+}
 
 fVector::fVector( const Float *x, int n )
 {
