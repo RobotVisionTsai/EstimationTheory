@@ -78,7 +78,54 @@ int main()
     fVector VecC(VecA);
     VecC.Show();
 
-    cout << &VecA << endl << &VecC << endl; 
+	cout << "\nStarts to test vector functions..." << endl;
+
+	// 16. Min(A,B)
+	cout << "\n16. Min(A,B)" << endl;
+	(Min(VecA,VecB)).Show();
+
+	// 17. Max(A,B)
+	cout << "\n17. Max(A,B)" << endl;
+	(Max(VecA,VecB)).Show();
+
+	// VecA.Show();
+	// VecB.Show();
+
+	// 18. Dist(A,B)
+	cout << "\n18. Dist(A,B)" << endl;
+	cout << "Dist(A,B) = " << Dist(VecA,VecB) << endl;
+
+	// 19. Normalize(A,B)
+	cout << "\n19. Normalize(A)" << endl;
+	(Normalize(VecA)).Show();
+
+	// 20. OneNorm(A)
+	cout << "\n20. OneNorm(A)" << endl;
+	cout << "OneNorm(A) = " << OneNorm(VecA) << endl;
+
+	// 21. TwoNorm(A)
+	cout << "\n21. TwoNorm(A)" << endl;
+	cout << "TwoNorm(A) = " << TwoNorm(VecA) << endl;
+
+	// 22. TwoNormSqr(A)
+	cout << "\n22. TwoNormSqr(A)" << endl;
+	cout << "TwoNormSqr(A) = " << TwoNormSqr(VecA) << endl;
+
+	// 23. Sqrt(A,B)
+	cout << "\n23. Sqrt(A)" << endl;
+	(Sqrt(VecA)).Show();
+
+	// 24. Mean(A)
+	cout << "\n24. Mean(A)" << endl;
+	cout << "Mean(A) = " << Mean(VecA) << endl;
+
+	// 25. Var(A)
+	cout << "\n25. Var(A)" << endl;
+	cout << "Var(A) = " << Var(VecA) << endl;
+
+	// 26. Std(A)
+	cout << "\n26. Std(A)" << endl;
+	cout << "Std(A) = " << Std(VecA) << endl;
 
     return 0 ;
 
