@@ -3,94 +3,95 @@
 #include "fVector.h"
 using namespace std;
 
+
 fVector operator + ( const fVector &A, const fVector &B)
 {
-    Float c[A.size]={};
+    fVector c(A.size);
     for(int i=0;i<A.size;i++)
     {
-        c[i] = A.elem[i]+B.elem[i];
+        c.elem[i] = A.elem[i]+B.elem[i];
     }
-    return fVector(c,A.size);
+    return c;
 }
 
 fVector operator - ( const fVector &A, const fVector &B)
 {
-    Float c[A.size]={};
+    fVector c(A.size);
     for(int i=0;i<A.size;i++)
     {
-        c[i] = A.elem[i]-B.elem[i];
+        c.elem[i] = A.elem[i]-B.elem[i];
     }
-    return fVector(c,A.size);
+    return c;
 }
 
 fVector operator - ( const fVector &A)
 {
-    Float c[A.size]={};
+    fVector c(A.size);
     for(int i=0;i<A.size;i++)
     {
-        c[i] = -A.elem[i];
+        c.elem[i] = -A.elem[i];
     }
-    return fVector(c,A.size);
+    return c;
 }
 
 fVector operator - ( const fVector &A, Float n)
 {
-    Float c[A.size]={};
+    fVector c(A.size);
     for(int i=0;i<A.size;i++)
     {
-        c[i] = A.elem[i]-n;
+        c.elem[i] = A.elem[i]-n;
     }
-    return fVector(c,A.size);
+    return c;
 }
 
 fVector operator - ( Float n, const fVector &A)
 {
-    Float c[A.size]={};
+    fVector c(A.size);
     for(int i=0;i<A.size;i++)
     {
-        c[i] = n-A.elem[i];
+        c.elem[i] = n-A.elem[i];
     }
-    return fVector(c,A.size);
+    return c;
 }
 
 fVector operator * ( const fVector &A, Float n )
 {
-    Float c[A.size]={};
+    fVector c(A.size);
     for(int i=0;i<A.size;i++)
     {
-        c[i] = A.elem[i]*n;
+        c.elem[i] = A.elem[i]*n;
     }
-    return fVector(c,A.size);
+    return c;
 }
 
 fVector operator * ( Float n, const fVector &A )
 {
-    Float c[A.size]={};
+    fVector c(A.size);
     for(int i=0;i<A.size;i++)
     {
-        c[i] = A.elem[i]*n;
+        c.elem[i] = A.elem[i]*n;
     }
-    return fVector(c,A.size);
+    return c;
 }
 
 fVector operator / ( const fVector &A, Float n)
 {
-    Float c[A.size]={};
+    fVector c(A.size);
     for(int i=0;i<A.size;i++)
     {
-        c[i] = A.elem[i]/n;
+        c.elem[i] = A.elem[i]/n;
     }
-    return fVector(c,A.size);
+    return c;
 }
 
 fVector operator / ( const fVector &A, const fVector &B)
 {
-    Float c[A.size]={};
+    fVector c(A.size);
     for(int i=0;i<A.size;i++)
     {
-        c[i] = A.elem[i]/B.elem[i];
+        c.elem[i] = A.elem[i]/B.elem[i];
     }
-    return fVector(c,A.size);
+    return c;
 }
 
 double operator * ( const fVector &A, const fVector &B)
@@ -146,7 +147,8 @@ fVector& operator /= ( fVector &A, Float b)
 
 fVector::fVector(int size)
 {
-    size = size ;
+    this->size = size;
+    elem = new Float[size];
 }
 
 fVector::fVector(Float a,Float b,Float c)
