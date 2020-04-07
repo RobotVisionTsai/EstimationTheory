@@ -308,15 +308,22 @@ void fVector::Show(VecType Type) const
 {
     if(Type==1)
     {
-        cout << "{";
+        // cout << "{";
+        // for(int i=0;i<size;i++)
+        // {
+        //     if(i!=(size-1))
+        //         cout<<elem[i]<<",";
+        //     else
+        //         cout<<elem[i];
+        // }
+        // cout<<"}"<<endl;
         for(int i=0;i<size;i++)
         {
             if(i!=(size-1))
-                cout<<elem[i]<<",";
+                cout<<elem[i]<<" ";
             else
-                cout<<elem[i];
+                cout<<elem[i]<<endl;
         }
-        cout<<"}"<<endl;
     }
 
 }

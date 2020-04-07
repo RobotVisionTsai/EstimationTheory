@@ -1,8 +1,9 @@
 #include<iostream>
 #include "fVector.h"
+#include "fMatrix.h"
 using namespace std;
 
-int main()
+void testVectorFuns()
 {
     Float A[3] = {1.1, 2.2, 3.3};
 	Float B[3] = {4.4, 5.5, 6.6};
@@ -127,6 +128,74 @@ int main()
 	cout << "\n26. Std(A)" << endl;
 	cout << "Std(A) = " << Std(VecA) << endl;
 
-    return 0 ;
+}
 
+void testMatrixFuns()
+{
+	Float A[3] = {1.1, 2.2, 3.3};
+	Float B[3] = {4.4, 5.5, 6.6};
+	Float C[9] = {0.9649, 0.9572, 0.1419, 
+				  0.1576, 0.4854, 0.4218, 
+				  0.9706, 0.8003, 0.9157};
+	Float D[9] = {0.8147, 0.9134, 0.2785, 
+				  0.9058, 0.6324, 0.5469, 
+				  0.1270, 0.0975, 0.9575};
+	Float X[15] = {0.7922, 0.9340, 0.6555, 
+				   0.9595, 0.6787, 0.1712, 
+				   0.6557, 0.7577, 0.7060, 
+				   0.0357, 0.7431, 0.0318, 
+				   0.8491, 0.3922, 0.2769};
+	fVector VecA(A, 3);
+	fVector VecB(B, 3);
+	fVector VecC(VecA);
+	fMatrix MatA(C, 3, 3);
+	fMatrix MatB(D, 3, 3);
+	fMatrix MatC(MatA);
+	fMatrix MatX(X, 3, 5);
+
+	cout << "\nMatA = " << endl;
+	MatA.Show();
+	
+	cout << "\nMatB = " << endl;
+	MatB.Show();
+
+	cout << "\nMatX = " << endl;
+	MatX.Show();
+
+	cout << "\nStarts to test matrix operators..." << endl;
+	// 1. A+B
+	cout << "\n1. A+B" << endl;
+	(MatA+MatB).Show();
+
+	// 2. A-B
+	cout << "\n2. A-B" << endl;
+	(MatA-MatB).Show();
+
+	// 3. -B
+	cout << "\n3. -B" << endl;
+	(-MatB).Show();
+
+	// 4. 2*A
+	cout << "\n4. 2*A" << endl;
+	(2*MatA).Show();
+
+	// 5. A*0.5
+	cout << "\n5. A*0.5" << endl;
+	(MatA*0.5).Show();
+
+	// 6. A/2
+	cout << "\n6. A/2" << endl;
+	(MatA/2).Show();
+
+	// 7. A*B
+	cout << "\n7. A*B" << endl;
+	(MatA*MatX).Show();
+	
+}
+
+int main()
+{
+	// testVectorFuns();
+	testMatrixFuns();
+	return 0;
 }
