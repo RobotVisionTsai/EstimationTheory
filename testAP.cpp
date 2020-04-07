@@ -187,9 +187,39 @@ void testMatrixFuns()
 	cout << "\n6. A/2" << endl;
 	(MatA/2).Show();
 
+	cout << "\n MatX" << endl;
+	MatX.Show();
+
 	// 7. A*B
 	cout << "\n7. A*B" << endl;
-	(MatA*MatX).Show();
+	(MatA*MatB).Show();
+
+	// // 8. MatA*VecA
+	// cout << "\n8. MatA*VecA" << endl;
+	// (MatA*VecA).Show()
+
+	// // 9. VecA*MatA
+	// cout << "\n9. VecA*MatA" << endl;
+	// (VecA*MatA).Show(RowVec);
+
+	// 10. A+=B
+	cout << "\n10. A+=B" << endl;
+	(MatA+=MatB).Show();
+
+	// 11. A-=B
+	cout << "\n11. A-=B" << endl;
+	(MatA-=MatB).Show();
+
+	// 12. A*=2
+	cout << "\n12. A*=2" << endl;
+	(MatA*=2).Show();
+
+	// 13. A/=2
+	cout << "\n13. A/=2" << endl;
+	(MatA/=2).Show();
+
+
+	
 	
 }
 

@@ -76,9 +76,10 @@ fMatrix  operator *  ( const fMatrix &A, const fMatrix &B )
     for(int i=0;i<A.rows*B.cols;i++)
     {
         Float sum = 0;
-        int n = i%B.rows;
-        int d = i/A.rows;
-        for(int j=0;j<B.cols;j++)
+        int d = i/B.cols;
+        int n = i%B.cols;
+
+        for(int j=0;j<A.cols;j++)
         {
             sum += A.elem[d*A.cols+j]*B.elem[n+j*B.cols];
         }
@@ -88,6 +89,43 @@ fMatrix  operator *  ( const fMatrix &A, const fMatrix &B )
     // cout << A.rows*B.cols<<endl;
     return c;
 }
+
+fMatrix& operator += (fMatrix &A, const fMatrix &B )
+{
+    for(int i=0;i<A.rows*A.cols;i++)
+    {
+        A.elem[i] += B.elem[i];
+    }
+    return A;
+}
+
+fMatrix& operator -= (fMatrix &A, const fMatrix &B )
+{
+    for(int i=0;i<A.rows*A.cols;i++)
+    {
+        A.elem[i] -= B.elem[i];
+    }
+    return A;
+}
+
+fMatrix& operator *= (fMatrix &A,  Float n )
+{
+    for(int i=0;i<A.rows*A.cols;i++)
+    {
+        A.elem[i] *= n;
+    }
+    return A;
+}
+
+fMatrix& operator /= (fMatrix &A,  Float n )
+{
+    for(int i=0;i<A.rows*A.cols;i++)
+    {
+        A.elem[i] /= n;
+    }
+    return A;
+}
+
 void fMatrix::Show() const
 {
     // for(int i=0;i<cols*rows;i++)
