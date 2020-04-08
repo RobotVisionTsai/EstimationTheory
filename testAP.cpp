@@ -151,7 +151,7 @@ void testMatrixFuns()
 	fMatrix MatA(C, 3, 3);
 	fMatrix MatB(D, 3, 3);
 	fMatrix MatC(MatA);
-	fMatrix MatX(X, 3, 5);
+	fMatrix MatX(X, 5, 3);
 
 	cout << "\nMatA = " << endl;
 	MatA.Show();
@@ -217,10 +217,20 @@ void testMatrixFuns()
 	// 13. A/=2
 	cout << "\n13. A/=2" << endl;
 	(MatA/=2).Show();
+	cout << "\nStarts to test matrix functions..." << endl;
 
+	// 16. Xt
+	cout << "\n16. Xt" << endl;
+	Transp(MatX).Show();
 
-	
-	
+	// 17. X*Xt
+	cout << "\n17. X*Xt" << endl;
+	AATransp(MatX).Show();
+
+	// 18. Xt*X
+	cout << "\n18. Xt*X" << endl;
+	ATranspA(MatX).Show();
+
 }
 
 int main()

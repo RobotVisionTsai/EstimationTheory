@@ -126,6 +126,29 @@ fMatrix& operator /= (fMatrix &A,  Float n )
     return A;
 }
 
+fMatrix  Transp      ( const fMatrix &A )
+{
+    fMatrix c(A.cols,A.rows);
+    for(int i=0;i<A.cols;i++)
+    {
+        for(int j=0;j<A.rows;j++)
+        {
+            c.elem[i*A.rows+j] = A.elem[j*A.cols+i];
+        }
+    }
+    return c;
+}
+
+fMatrix  AATransp    ( const fMatrix &A )
+{
+    return A * Transp(A);
+}
+
+fMatrix  ATranspA    ( const fMatrix &A )
+{
+    return Transp(A) * A;
+}
+
 void fMatrix::Show() const
 {
     // for(int i=0;i<cols*rows;i++)
