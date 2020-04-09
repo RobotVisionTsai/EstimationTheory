@@ -1,5 +1,5 @@
-#include<iostream>
-#include<string.h>
+#include <iostream>
+#include <string.h>
 #include <iomanip>
 #include <math.h>
 #include "fMatrix.h"
@@ -163,6 +163,167 @@ fMatrix  Outer (const fVector &A, const fVector &B )
         c.elem[i] = A.Array()[i/c.rows]*B.Array()[i%c.rows];
     }
     return c;
+}
+fMatrix Identity	( int nSize )
+{
+    fMatrix c(nSize ,nSize );
+    for(int i=0;i<nSize*nSize;i++)
+    {
+        if(i/nSize==i%nSize)
+        {
+            c.elem[i] = 1;
+        }
+        else
+        {
+            c.elem[i] = 0;
+        }
+    }
+    return c;
+}
+
+fMatrix  Diag        ( const fVector &A)
+{
+    fMatrix c(A.Size(),A.Size());
+    for(int i=0;i<A.Size()*A.Size();i++)
+    {
+        if(i/A.Size()==i%A.Size())
+        {
+            c.elem[i] = A.Array()[i/A.Size()];
+        }
+        else
+        {
+            c.elem[i] = 0;
+        }    
+    }
+    return c;
+}
+
+fVector  Diag        ( const fMatrix &A )
+{
+    if(A.rows != A.cols)
+    {
+        cout << "shape error!" <<endl;
+        return 0;
+    }
+
+    fVector c(A.rows);
+    for(int i=0;i<A.rows*A.cols;i++)
+    {
+        if(i/A.rows==i%A.cols)
+        {
+            c.Array()[i/A.rows] = A.elem[i];
+        }    
+    }
+    return c;
+}
+
+fMatrix  Diag        ( Float A, Float B, Float C )
+{
+    fMatrix c(3,3);
+    for(int i=0;i<9;i++)
+    {
+        c.elem[i] = 0;
+    }
+    c.elem[0] = A;
+    c.elem[4] = B;
+    c.elem[8] = C;
+    return c;
+}
+
+double   Determinant ( const fMatrix &A )
+{
+    if(A.cols!=A.rows)
+    {
+        cout << "shape error!" <<endl;
+        return 0;
+    }
+    double mul;
+    double sum = 0;
+
+    for(int i=0;i<A.cols;i++)
+    {
+        mul = 1;
+        for(int j=0;j<A.rows;j++)
+        {
+            mul *= A.elem[(j*A.rows)+((j+i)%A.cols)];
+        }
+        sum += mul;
+        // cout <<sum<<endl;
+    }
+
+    for(int i=0;i<A.cols;i++)
+    {
+        mul = 1;
+        for(int j=0;j<A.rows;j++)
+        {
+            mul *= A.elem[(j*A.rows)+(2-((j+i)%A.rows))];
+        }
+        sum -= mul;
+        // cout << sum <<endl;
+    }
+
+    return sum;
+}
+
+double   Trace       ( const fMatrix &A )
+{
+    if(A.cols!=A.rows)
+    {
+        cout << "shape error!" <<endl;
+        return 0;
+    }
+    double sum = 0;
+    for(int i=0;i<A.rows*A.cols;i++)
+    {
+        if(i/A.cols==i%A.rows)
+        {
+            sum += A.elem[i];
+        }
+    }
+    return sum;
+}
+
+fMatrix  Inverse  ( const fMatrix &A)
+{
+    if(A.cols!=A.rows)
+    {
+        cout << "shape error!" <<endl;
+        return 0;
+    }
+    fMatrix c(A.rows,A.cols);
+    fMatrix d(2,2);
+    for(int i=0;i<A.cols*A.rows;i++)
+    {
+        // fMatrix d(A.rows-1,A.cols-1);
+        int n = 0;
+        for(int j=0;j<A.cols*A.rows;j++)
+        {
+            if(j/A.rows != i/A.rows && j%A.cols != i%A.cols)
+            {
+                d.elem[n] = A.elem[j];
+                cout<<j;
+                n++;
+            }
+        }
+        cout <<endl;
+        for(int k=0;k<4;k++)
+        {
+            cout << d.elem[k] << " ";
+        }
+        cout<<"   det="<<Determinant(d)<<endl;
+        if (i%2 == 0)
+        {
+            c.elem[i] = Determinant(d)/Determinant(A);
+        }
+        else
+        {
+            c.elem[i] = -Determinant(d)/Determinant(A);
+        }
+        // c = Transp(c);
+    
+    }
+    return c;
+
 }
 
 void fMatrix::Show() const

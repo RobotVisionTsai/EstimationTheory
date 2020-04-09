@@ -134,4 +134,7 @@ private:
 	static int nMatCount;
 };
 fMatrix  Outer       ( const fVector &, const fVector & );
+fMatrix  Identity	( int nSize );
+fMatrix  Diag        ( const fVector & );
+fMatrix  Diag        ( Float, Float, Float );
 #endif // __MATRIX_INCLUDED__

@@ -145,6 +145,7 @@ void testMatrixFuns()
 				   0.6557, 0.7577, 0.7060, 
 				   0.0357, 0.7431, 0.0318, 
 				   0.8491, 0.3922, 0.2769};
+	Float s[4] = {1,2,3,4};			   
 	fVector VecA(A, 3);
 	fVector VecB(B, 3);
 	fVector VecC(VecA);
@@ -152,7 +153,7 @@ void testMatrixFuns()
 	fMatrix MatB(D, 3, 3);
 	fMatrix MatC(MatA);
 	fMatrix MatX(X, 5, 3);
-
+	fMatrix Mats(s, 2, 2);
 	cout << "\nMatA = " << endl;
 	MatA.Show();
 	
@@ -234,6 +235,32 @@ void testMatrixFuns()
 	// 19, VecA*VecBt
 	cout << "\n19. VecA*VecBt" << endl;
 	(Outer(VecA,VecB)).Show();
+
+	// 20, Identity(4)
+	cout << "\n20. Identity(4)" << endl;
+	(Identity(4)).Show();
+
+	// 21, Diag(VecA)
+	cout << "\n21. Diag(VecA)" << endl;
+	(Diag(VecA)).Show();
+
+	// 22, Diag(MatA)
+	cout << "\n22. Diag(MatA)" << endl;
+	(Diag(MatA)).Show();
+
+	// 23, Diag(0.1, 0.2, 0.3)
+	cout << "\n23. Diag(0.1, 0.2, 0.3)" << endl;
+	(Diag(0.1, 0.2, 0.3)).Show();
+
+	// 24. Determinant(MatA)
+	cout << "\n24. Determinant(MatA) = " << Determinant(MatA) << endl;
+
+	// 25. Trace(MatA)
+	cout << "\n25. Trace(MatA) = " << Trace(MatA) << endl;
+
+	// 28. Inverse(MatA)
+	cout << "\n28. Inverse(MatA) = " << endl; 
+	(Inverse(MatA)).Show();
 
 }
 
