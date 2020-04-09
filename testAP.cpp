@@ -233,11 +233,7 @@ void testMatrixFuns()
 
 	// 19, VecA*VecBt
 	cout << "\n19. VecA*VecBt" << endl;
-	// fMatrix Z = Outer(VecA,VecB);
 	(Outer(VecA,VecB)).Show();
-	// Outer
-	
-	
 
 }
 
