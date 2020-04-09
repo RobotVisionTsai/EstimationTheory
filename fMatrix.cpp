@@ -90,6 +90,12 @@ fMatrix  operator *  ( const fMatrix &A, const fMatrix &B )
     return c;
 }
 
+// fVector  operator *  ( const fMatrix &A, const fVector &B )
+// {
+//     cout<< B.Array()[0];
+//     return 0;
+// }
+
 fMatrix& operator += (fMatrix &A, const fMatrix &B )
 {
     for(int i=0;i<A.rows*A.cols;i++)
@@ -147,6 +153,16 @@ fMatrix  AATransp    ( const fMatrix &A )
 fMatrix  ATranspA    ( const fMatrix &A )
 {
     return Transp(A) * A;
+}
+
+fMatrix  Outer (const fVector &A, const fVector &B )
+{
+    fMatrix c(A.Size(),B.Size());
+    for(int i=0;i<A.Size()*B.Size();i++)
+    {
+        c.elem[i] = A.Array()[i/c.rows]*B.Array()[i%c.rows];
+    }
+    return c;
 }
 
 void fMatrix::Show() const

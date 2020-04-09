@@ -196,7 +196,7 @@ void testMatrixFuns()
 
 	// // 8. MatA*VecA
 	// cout << "\n8. MatA*VecA" << endl;
-	// (MatA*VecA).Show()
+	// (MatA*VecA).Show();
 
 	// // 9. VecA*MatA
 	// cout << "\n9. VecA*MatA" << endl;
@@ -230,6 +230,14 @@ void testMatrixFuns()
 	// 18. Xt*X
 	cout << "\n18. Xt*X" << endl;
 	ATranspA(MatX).Show();
+
+	// 19, VecA*VecBt
+	cout << "\n19. VecA*VecBt" << endl;
+	// fMatrix Z = Outer(VecA,VecB);
+	(Outer(VecA,VecB)).Show();
+	// Outer
+	
+	
 
 }
 

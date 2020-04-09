@@ -133,5 +133,5 @@ private:
 
 	static int nMatCount;
 };
-
+fMatrix  Outer       ( const fVector &, const fVector & );
 #endif // __MATRIX_INCLUDED__
