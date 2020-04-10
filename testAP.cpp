@@ -262,6 +262,16 @@ void testMatrixFuns()
 	cout << "\n28. Inverse(MatA) = " << endl; 
 	(Inverse(MatA)).Show();
 
+	cout << "\nMatA"<<endl;
+	MatA.Show();
+
+	// 30. Mean(MatA)
+	cout << "\n30. Mean(MatA) = " << endl; 
+	(Mean(MatA)).Show(RowVec);
+
+	// 31. Cov(MatA)
+	cout << "\n31. Cov(MatA) = " << endl; 
+	(Cov(MatA)).Show();
 }
 
 int main()

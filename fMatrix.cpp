@@ -240,29 +240,50 @@ double   Determinant ( const fMatrix &A )
     double mul;
     double sum = 0;
 
-    for(int i=0;i<A.cols;i++)
+    if (A.rows == 2)
     {
-        mul = 1;
-        for(int j=0;j<A.rows;j++)
-        {
-            mul *= A.elem[(j*A.rows)+((j+i)%A.cols)];
-        }
-        sum += mul;
-        // cout <<sum<<endl;
+        sum = A.elem[0]*A.elem[3]-A.elem[1]*A.elem[2];
+        return sum;
     }
 
-    for(int i=0;i<A.cols;i++)
+    if (A.rows == 3)
     {
-        mul = 1;
-        for(int j=0;j<A.rows;j++)
+        for(int i=0;i<A.cols;i++)
         {
-            mul *= A.elem[(j*A.rows)+(2-((j+i)%A.rows))];
+            mul = 1;
+            for(int j=0;j<A.rows;j++)
+            {
+                mul *= A.elem[(j*A.rows)+((j+i)%A.cols)];
+                // cout<< (j*A.rows)+((j+i)%A.cols) << " " ;
+            }
+            // cout << endl;
+            sum += mul;
+            // cout <<sum<<endl;
         }
-        sum -= mul;
-        // cout << sum <<endl;
+        // cout << "---------------------"<<endl;
+        for(int i=0;i<A.cols;i++)
+        {
+            mul = 1;
+            for(int j=0;j<A.rows;j++)
+            {
+                // mul *= A.elem[(j*A.rows)+(2-((j+i)%A.rows))];
+                mul *= A.elem[(j*A.rows)+((A.cols-1)-((j+i)%A.rows))];
+                // cout<< ((j*A.rows)+((A.cols-1)-((j+i)%A.rows))) << " " ;
+            }
+            // cout << endl;
+            sum -= mul;
+            // cout << sum <<endl;
+        }
+        return sum;
     }
 
-    return sum;
+    else
+    {
+        cout << "Not support this shape" << endl;
+        return 0;
+    }
+    
+    // return sum;
 }
 
 double   Trace       ( const fMatrix &A )
@@ -301,16 +322,16 @@ fMatrix  Inverse  ( const fMatrix &A)
             if(j/A.rows != i/A.rows && j%A.cols != i%A.cols)
             {
                 d.elem[n] = A.elem[j];
-                cout<<j;
+                // cout<<j;
                 n++;
             }
         }
-        cout <<endl;
-        for(int k=0;k<4;k++)
-        {
-            cout << d.elem[k] << " ";
-        }
-        cout<<"   det="<<Determinant(d)<<endl;
+        // cout <<endl;
+        // for(int k=0;k<4;k++)
+        // {
+        //     cout << d.elem[k] << " ";
+        // }
+        // cout<<"   det="<<Determinant(d)<<endl;
         if (i%2 == 0)
         {
             c.elem[i] = Determinant(d)/Determinant(A);
@@ -319,11 +340,30 @@ fMatrix  Inverse  ( const fMatrix &A)
         {
             c.elem[i] = -Determinant(d)/Determinant(A);
         }
+        
+        
         // c = Transp(c);
     
     }
-    return c;
+    return Transp(c);
+}
 
+fVector  Mean		( const fMatrix &A )
+{
+    fVector c(A.rows);
+    Float n;
+    for(int i=0;i<A.rows;i++)
+    {
+        n = 0;
+        for(int j=0;j<A.cols;j++)
+        {
+            n += A.elem[i+j*A.cols];
+            // cout << A.elem[i*A.cols+j] << " ";
+        }
+        // cout << endl;
+        c.Array()[i] = n / A.cols;
+    }
+    return c;
 }
 
 void fMatrix::Show() const

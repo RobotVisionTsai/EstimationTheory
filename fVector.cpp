@@ -325,6 +325,17 @@ void fVector::Show(VecType Type) const
                 cout<<elem[i]<<endl;
         }
     }
+    if(Type==2)
+    {
+        
+        for(int i=0;i<size;i++)
+        {
+            // if(i!=(size-1))
+            //     cout<<elem[i]<<" ";
+            // else
+                cout<<elem[i]<<endl;
+        }
+    }
 
 }
 
