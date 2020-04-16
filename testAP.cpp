@@ -145,7 +145,7 @@ void testMatrixFuns()
 				   0.6557, 0.7577, 0.7060, 
 				   0.0357, 0.7431, 0.0318, 
 				   0.8491, 0.3922, 0.2769};
-	Float s[4] = {1,2,3,4};			   
+	// Float s[4] = {1,2,3,4};			   
 	fVector VecA(A, 3);
 	fVector VecB(B, 3);
 	fVector VecC(VecA);
@@ -153,7 +153,7 @@ void testMatrixFuns()
 	fMatrix MatB(D, 3, 3);
 	fMatrix MatC(MatA);
 	fMatrix MatX(X, 5, 3);
-	fMatrix Mats(s, 2, 2);
+	// fMatrix Mats(s, 2, 2);
 	cout << "\nMatA = " << endl;
 	MatA.Show();
 	
@@ -269,9 +269,16 @@ void testMatrixFuns()
 	cout << "\n30. Mean(MatA) = " << endl; 
 	(Mean(MatA)).Show(RowVec);
 
-	// 31. Cov(MatA)
-	cout << "\n31. Cov(MatA) = " << endl; 
-	(Cov(MatA)).Show();
+	// // 31. Cov(MatA)
+	// cout << "\n31. Cov(MatA) = " << endl; 
+	// (Cov(MatA)).Show();
+	Float s[25] = {1,8,1,6,7,5,4,3,1,4,9,6,4,1,2,3,5,5,6,8,9,7,5,12,5};
+	fMatrix Mats(s, 5, 5);
+
+	cout << "\n5x5 det = " << endl << Determinant(Mats) <<endl;
+
+	cout << "\n28. Inverse(Mats) = " << endl; 
+	(Inverse(Mats)).Show();
 }
 
 int main()

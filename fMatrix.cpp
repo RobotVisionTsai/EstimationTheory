@@ -245,45 +245,30 @@ double   Determinant ( const fMatrix &A )
         sum = A.elem[0]*A.elem[3]-A.elem[1]*A.elem[2];
         return sum;
     }
-
-    if (A.rows == 3)
-    {
-        for(int i=0;i<A.cols;i++)
-        {
-            mul = 1;
-            for(int j=0;j<A.rows;j++)
-            {
-                mul *= A.elem[(j*A.rows)+((j+i)%A.cols)];
-                // cout<< (j*A.rows)+((j+i)%A.cols) << " " ;
-            }
-            // cout << endl;
-            sum += mul;
-            // cout <<sum<<endl;
-        }
-        // cout << "---------------------"<<endl;
-        for(int i=0;i<A.cols;i++)
-        {
-            mul = 1;
-            for(int j=0;j<A.rows;j++)
-            {
-                // mul *= A.elem[(j*A.rows)+(2-((j+i)%A.rows))];
-                mul *= A.elem[(j*A.rows)+((A.cols-1)-((j+i)%A.rows))];
-                // cout<< ((j*A.rows)+((A.cols-1)-((j+i)%A.rows))) << " " ;
-            }
-            // cout << endl;
-            sum -= mul;
-            // cout << sum <<endl;
-        }
-        return sum;
-    }
-
-    else
-    {
-        cout << "Not support this shape" << endl;
-        return 0;
-    }
     
-    // return sum;
+    for(int i=0;i<A.cols;i++)
+    {
+        int n=0;
+        fMatrix c(A.cols-1,A.cols-1);
+        for(int j=A.cols;j<A.cols*A.rows;j++)
+        {
+            if(j%A.cols != i)
+            {
+                c.elem[n] = A.elem[j];
+                n++;
+                // cout << j << " ";
+            }
+        }
+        // cout << endl;
+        
+        if(i%2 == 0)
+            sum += A.elem[i]*Determinant(c);
+            // cout << Determinant(c) << " ";
+        if(i%2 == 1)
+            sum -= A.elem[i]*Determinant(c);
+            // cout << Determinant(c) << " ";
+    }
+    return sum;
 }
 
 double   Trace       ( const fMatrix &A )
@@ -312,7 +297,7 @@ fMatrix  Inverse  ( const fMatrix &A)
         return 0;
     }
     fMatrix c(A.rows,A.cols);
-    fMatrix d(2,2);
+    fMatrix d(A.rows-1,A.cols-1);
     for(int i=0;i<A.cols*A.rows;i++)
     {
         // fMatrix d(A.rows-1,A.cols-1);
@@ -340,7 +325,6 @@ fMatrix  Inverse  ( const fMatrix &A)
         {
             c.elem[i] = -Determinant(d)/Determinant(A);
         }
-        
         
         // c = Transp(c);
     
