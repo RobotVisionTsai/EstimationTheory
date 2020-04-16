@@ -350,6 +350,20 @@ fVector  Mean		( const fMatrix &A )
     return c;
 }
 
+fMatrix  Cov    ( const fMatrix &A )
+{
+    fVector Am = Mean(A);
+    fMatrix c(A);
+    for(int i=0;i<A.cols;i++)
+    {
+        for(int j=0;j<A.cols;j++)
+        {
+            c.elem[i*A.cols+j] -= Am.Array()[j]; 
+        }
+    }
+    return (Transp(c)*c) / (A.rows-1);
+}
+
 void fMatrix::Show() const
 {
     // for(int i=0;i<cols*rows;i++)

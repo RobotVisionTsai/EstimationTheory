@@ -132,6 +132,9 @@ private:
     Float *elem; // Pointer to the actual data.
 
 	static int nMatCount;
+public: // Inlined functions.
+    inline Float  operator()( int i,int j) const { return elem[i*rows+j]; }
+
 };
 fMatrix  Outer       ( const fVector &, const fVector & );
 fMatrix  Identity	( int nSize );

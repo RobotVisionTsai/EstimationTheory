@@ -269,16 +269,19 @@ void testMatrixFuns()
 	cout << "\n30. Mean(MatA) = " << endl; 
 	(Mean(MatA)).Show(RowVec);
 
-	// // 31. Cov(MatA)
-	// cout << "\n31. Cov(MatA) = " << endl; 
-	// (Cov(MatA)).Show();
-	Float s[25] = {1,8,1,6,7,5,4,3,1,4,9,6,4,1,2,3,5,5,6,8,9,7,5,12,5};
-	fMatrix Mats(s, 5, 5);
+	// 31. Cov(MatA)
+	cout << "\n31. Cov(MatA) = " << endl; 
+	(Cov(MatA)).Show();
+	
+	// Float s[25] = {1,8,1,6,7,5,4,3,1,4,9,6,4,1,2,3,5,5,6,8,9,7,5,12,5};
+	// fMatrix Mats(s, 5, 5);
 
-	cout << "\n5x5 det = " << endl << Determinant(Mats) <<endl;
+	// cout << "\n5x5 det = " << endl << Determinant(Mats) <<endl;
 
-	cout << "\n28. Inverse(Mats) = " << endl; 
-	(Inverse(Mats)).Show();
+	// cout << "\n28. Inverse(Mats) = " << endl; 
+	// (Inverse(Mats)).Show();
+
+	// cout << MatA(2,0) << endl;
 }
 
 int main()
