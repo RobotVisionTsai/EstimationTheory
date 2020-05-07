@@ -1,15 +1,27 @@
+// tasks.json:
+
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "build file",
-      "type": "shell",
-      "command": "g++",
-      "args": ["-g", "-o", "helloworld", "helloworld.cpp"],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      }
-    }
-  ]
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",           //launch中"preLaunchTask"调用的任务名，需要大小写保持一致
+            "type": "shell",            //任务执行的是shell命令，也可以是process程序
+            "command": "make",  //执行的命令是mingw32-make
+            "args": [
+                "-C",                   //跳转到指定目录去读取目标目录下的Makefile文件
+                "./Makefile",           //要跳转的目标目录
+                "clean",                //要执行的任务
+                "default",              //要执行的下一个任务
+            ],
+            "group": { 
+                "kind": "build",    //任务分组名,可以通过在Command Palette(F1) 输入run build task来运行
+                "isDefault": true   
+            },
+            "problemMatcher": [
+                "$gcc", // 使用gcc捕获错误
+            ],
+        }
+    ]
 }
