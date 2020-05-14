@@ -125,6 +125,8 @@ public:
     fMatrix  GetBlock( int imin, int imax, int jmin, int jmax ) const;
 
 	void	Show() const;
+	int		Rows() const;
+	int 	Cols() const;
 
 private:
     int    rows; // Number of rows in the matrix.
