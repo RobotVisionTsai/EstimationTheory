@@ -215,6 +215,15 @@ fMatrix::~fMatrix( void )
     }
 }
 
+// int		fMatrix::Rows() const
+// {
+// 	return rows;
+// }
+// int 	fMatrix::Cols() const
+// {
+// 	return cols;
+// }
+
 static  const fMatrix Null;
 
 /*-------------------------------------------------------------------------*
@@ -240,25 +249,33 @@ static  const fMatrix Null;
 	// 7. Swap
 	fMatrix &SwapRows( int i1, int i2 )
 	{
-		fMatrix C(A.cols,A.rows);
-    	if(i1  > A.rows || i2 > A.rows)
-    	{
-        cout<<"shape error !!!"<<endl;
-        return 0;
-    	}
+		int N = Rows();
+		if(i1>N||i2>N)
+		{
+			cout<<"Shape Error!!!"<<endl;
+			
+		}
 	};
-    fMatrix &SwapCols( int j1, int j2 );
+    fMatrix &SwapCols( int j1, int j2 )
+	{
+		int N = Cols();
+	}
 	// 8. Inverse
 	fMatrix &Inv(void);
 
-	void    SetCol( int col, const fVector & )
+	void    SetCol( int col, const fVector & A)
+	{
+		A.size = col;
+
+
+	};
+    void    SetRow( int row, const fVector & A)
 	{
 
 	};
-    void    SetRow( int row, const fVector & );
     void    SetBlock( int imin, int imax, int jmin, int jmax, const fMatrix & );
     void    SetBlock( int imin, int imax, int jmin, int jmax, const fVector & );
-    void    SetSize( int rows, int cols = 0 );
+    void    SetSize( int rows, int cols);
 
     fVector  GetCol( int col ) const
 	{
