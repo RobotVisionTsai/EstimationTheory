@@ -327,7 +327,20 @@ fVector::~fVector()
 
 static  const fVector Null;
 
-    // fVector& operator=(const fVector&);
+fVector& fVector::operator=(const fVector&A)
+{
+    if (this != &A)
+    {
+        delete[] this->elem;
+        this->elem = new Float[A.size];
+        this->size = A.size;
+        for(int i=0;i<A.size;i++)
+        {
+            this->elem[i] = A.elem[i];
+        }
+    }
+    return *this;
+}
     // void    operator=(Float);
     // void    SetSize(int);
 
